@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0" prefWidth="555.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="587.0" prefWidth="565.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jtmjinfo.calculonotas.controller.NotasController">
    <children>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-15.0" layoutY="6.0" prefHeight="50.0" prefWidth="537.0" text="Cadastro de Notas " textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>
@@ -19,7 +19,7 @@
       </Label>
       <Label layoutX="3.0" layoutY="64.0" prefHeight="18.0" prefWidth="97.0" text="Nome do Aluno" />
       <TextField fx:id="tf_nomeAluno" layoutX="98.4" layoutY="61.0" prefHeight="26.0" prefWidth="433.0" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="23.0" />
-      <VBox layoutX="114.0" layoutY="102.0" prefHeight="269.0" prefWidth="136.0">
+      <VBox layoutX="114.0" layoutY="102.0" prefHeight="304.0" prefWidth="136.0">
          <children>
             <Label prefHeight="25.0" prefWidth="120.0" text="Nota P1">
                <font>
@@ -48,15 +48,7 @@
                </VBox.margin>
             </Label>
             <TextField fx:id="tf_notaTrabalho2" layoutX="10.0" layoutY="117.0" />
-            <Label layoutX="10.0" layoutY="158.0" prefHeight="25.0" prefWidth="120.0" text="Média">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-            </Label>
-            <TextField fx:id="tf_media" layoutX="10.0" layoutY="184.0" />
+
          </children>
       </VBox>
       <VBox layoutX="354.0" layoutY="102.0" prefHeight="270.0" prefWidth="136.0">
@@ -69,7 +61,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <TextField />
+            <TextField fx:id="tf_api"  layoutX="10.0" layoutY="117.0" prefWidth="136.0" />
             <Label prefHeight="25.0" prefWidth="120.0" text="Pontos Extras">
                <font>
                   <Font size="16.0" />
@@ -87,8 +79,8 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="tf_notaSub" layoutX="10.0" layoutY="117.0" prefWidth="136.0" />
-            <Label layoutX="10.0" layoutY="158.0" prefHeight="25.0" prefWidth="120.0" text="Média Final">
+            <TextField fx:id="tf_notaSub" visible="false" layoutX="10.0" layoutY="117.0" prefWidth="136.0" />
+            <Label layoutX="10.0" layoutY="158.0"  prefHeight="25.0" prefWidth="120.0" text="Média Final">
                <font>
                   <Font size="16.0" />
                </font>
@@ -96,28 +88,24 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="tf_mediaFinal" layoutX="10.0" layoutY="184.0" prefWidth="136.0" />
+            <TextField fx:id="tf_mediaFinal" editable="false" onKeyPressed="#calcular" layoutX="10.0" layoutY="184.0" prefWidth="136.0" />
          </children>
          <opaqueInsets>
             <Insets left="200.0" />
          </opaqueInsets>
       </VBox>
-      <Button fx:id="bt_salvar" layoutX="251.0" layoutY="371.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="109.0" text="Salvar">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
-      <TableView layoutY="408.0" prefHeight="176.0" prefWidth="555.0">
+      
+      <TableView layoutY="408.0" prefHeight="176.0" prefWidth="565.0">
         <columns>
           <TableColumn fx:id="tv_id" prefWidth="32.00000077486038" text="Id" />
-          <TableColumn fx:id="tv_nome" prefWidth="142.3999900817871" text="Nome" />
-            <TableColumn fx:id="tv_p1" prefWidth="33.600006103515625" text="P1" />
-            <TableColumn fx:id="tv_e1" prefWidth="39.99993896484375" text="E1" />
-            <TableColumn fx:id="tv_e2" prefWidth="33.59999084472656" text="E2" />
-            <TableColumn fx:id="tv_api" prefWidth="45.5999755859375" text="API" />
-            <TableColumn fx:id="tv_extras" prefWidth="42.4000244140625" text="Extras" />
-            <TableColumn fx:id="tv_sub" prefWidth="54.4000244140625" text="Sub" />
-            <TableColumn fx:id="tv_mediaFinal" prefWidth="81.5999755859375" text="Média Final" />
+          <TableColumn fx:id="tv_nome" prefWidth="128.79996490478516" text="Nome" />
+            <TableColumn fx:id="tv_p1" prefWidth="34.399993896484375" text="P1" />
+            <TableColumn fx:id="tv_e1" prefWidth="35.999969482421875" text="E1" />
+            <TableColumn fx:id="tv_e2" prefWidth="44.00006103515625" text="E2" />
+            <TableColumn fx:id="tv_api" prefWidth="40.00006103515625" text="API" />
+            <TableColumn fx:id="tv_extras" prefWidth="56.00006103515625" text="Extras" />
+            <TableColumn fx:id="tv_sub" prefWidth="63.20001220703125" text="Sub" />
+            <TableColumn fx:id="tv_mediaFinal" prefWidth="121.59994506835938" text="Média Final" />
         </columns>
          <columnResizePolicy>
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
