@@ -86,7 +86,7 @@ public class NotasController implements Initializable {
     }
 
     @FXML
-    void calcular(KeyEvent event) {
+    void calcularMedia(KeyEvent event) {
 
         aluno.setNome(tf_nomeAluno.getText().toString());
         aluno.setP1(Double.valueOf(tf_notaP1.getText().toString()));
@@ -94,18 +94,59 @@ public class NotasController implements Initializable {
         aluno.setTrabalho2(Double.valueOf(tf_notaTrabalho2.getText().toString()));
         aluno.setMedia(aluno.calcularMedia());
 
-        if (aluno.getMedia() * 2 >= 6){
-            aluno.setApi(Double.valueOf(tf_api.getText().toString()));
-            aluno.setMediaFinal(aluno.getMedia() + (aluno.getApi() * 0.5));
-            this.tf_mediaFinal.setText(String.valueOf(aluno.getMediaFinal()));
-           
-
+        this.tf_media.setText(String.valueOf(aluno.getMedia()));
+        if ((aluno.getMedia() * 2) >= 6) {
+            this.tf_notaSub.setVisible(false);
+        } else {
+            this.tf_api.setVisible(false);
+            this.tf_notaSub.setVisible(true);
         }
     }
 
+    @FXML
+    void calcularSub(KeyEvent event) {
+        if(!this.tf_api.isVisible()){
+            this.tf_api.setText("0");
+        }else{
+            aluno.setApi(Double.valueOf(tf_api.getText().toString()));
+        }
+
+
+        double media = aluno.getMedia() + (aluno.getApi() * 0.5);
+
+        if (media >= 6) {
+            this.tf_notaSub.setVisible(false);
+            this.tf_notaSub.setText("0");
+        } else if (media < 6) {
+            this.tf_notaSub.setVisible(true);
+
+
+        }
+
+
+    }
 
     @FXML
-    void mostrarMediaFinal(KeyEvent event) {
-        this.tf_mediaFinal.setText(String.valueOf(aluno.getMediaFinal()));
+    void calcularMediaFinal(KeyEvent event) {
+        aluno.setPontosExtras(Double.valueOf(this.tf_pontosExtras.getText().toString()));
+        if (this.tf_notaSub.isVisible()){
+            aluno.setSub(Double.valueOf(this.tf_notaSub.getText().toString()));
+            aluno.setMediaFinal(aluno.calcularMediaFinal());
+
+            this.tf_mediaFinal.setText(String.valueOf(aluno.getMediaFinal()));
+
+        }else{
+            aluno.setMediaFinal(aluno.calcularMediaFinal());
+
+            this.tf_mediaFinal.setText(String.valueOf(aluno.getMediaFinal()));
+
+        }
+
+
+
+
+
     }
+
+
 }

@@ -6,11 +6,11 @@ public class Aluno {
     private double p1;
     private double trabalho1;
     private double trabalho2;
-    private double media;
-    private double mediaFinal;
-    private double pontosExtras;
-    private double api;
-    private double sub;
+    private double media = 0;
+    private double mediaFinal = 0;
+    private double pontosExtras =0;
+    private double api=0 ;
+    private double sub=0;
 
     public String getNome() {
         return nome;
@@ -86,6 +86,10 @@ public class Aluno {
     public double calcularMedia(){
         this.media = ((this.p1 * 0.6) + (((this.trabalho1 + this.trabalho2)/2)* 0.4)) * 0.5;
         return this.media;
+    }
+    public double calcularMediaFinal(){
+        this.mediaFinal = media + (this.api * 0.5) + this.pontosExtras + (this.sub * 0.3);
+        return mediaFinal;
     }
 
 }

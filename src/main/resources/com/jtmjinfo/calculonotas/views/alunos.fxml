@@ -47,8 +47,16 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="tf_notaTrabalho2" layoutX="10.0" layoutY="117.0" />
-
+            <TextField fx:id="tf_notaTrabalho2"  layoutX="10.0" layoutY="117.0" />
+            <Label prefHeight="25.0" prefWidth="120.0" text="Média">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+            <TextField fx:id="tf_media" editable="false" onKeyPressed="#calcularMedia" layoutX="10.0" layoutY="117.0" />
          </children>
       </VBox>
       <VBox layoutX="354.0" layoutY="102.0" prefHeight="270.0" prefWidth="136.0">
@@ -70,7 +78,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="tf_pontosExtras" layoutX="10.0" layoutY="51.0" />
+            <TextField fx:id="tf_pontosExtras" onKeyPressed="#calcularSub"  layoutX="10.0" layoutY="51.0" />
             <Label prefHeight="25.0" prefWidth="120.0" text="Prova Sub">
                <font>
                   <Font size="16.0" />
@@ -79,7 +87,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="tf_notaSub" visible="false" layoutX="10.0" layoutY="117.0" prefWidth="136.0" />
+            <TextField fx:id="tf_notaSub"  layoutX="10.0" layoutY="117.0" prefWidth="136.0" />
             <Label layoutX="10.0" layoutY="158.0"  prefHeight="25.0" prefWidth="120.0" text="Média Final">
                <font>
                   <Font size="16.0" />
@@ -88,7 +96,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="tf_mediaFinal" editable="false" onKeyPressed="#calcular" layoutX="10.0" layoutY="184.0" prefWidth="136.0" />
+            <TextField fx:id="tf_mediaFinal" editable="false" onKeyPressed="#calcularMediaFinal" layoutX="10.0" layoutY="184.0" prefWidth="136.0" />
          </children>
          <opaqueInsets>
             <Insets left="200.0" />
