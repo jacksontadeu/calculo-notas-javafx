@@ -19,7 +19,7 @@
       </Label>
       <Label layoutX="3.0" layoutY="64.0" prefHeight="18.0" prefWidth="97.0" text="Nome do Aluno" />
       <TextField fx:id="tf_nomeAluno" layoutX="98.4" layoutY="61.0" prefHeight="26.0" prefWidth="433.0" AnchorPane.leftAnchor="98.0" AnchorPane.rightAnchor="23.0" />
-      <VBox layoutX="114.0" layoutY="102.0" prefHeight="304.0" prefWidth="136.0">
+      <VBox layoutX="114.0" layoutY="102.0" prefHeight="263.0" prefWidth="136.0">
          <children>
             <Label prefHeight="25.0" prefWidth="120.0" text="Nota P1">
                <font>
@@ -29,7 +29,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="tf_notaP1" />
+            <TextField fx:id="tf_notaP1" alignment="CENTER_RIGHT" />
             <Label prefHeight="25.0" prefWidth="120.0" text="Nota Trabalho 1">
                <font>
                   <Font size="16.0" />
@@ -38,7 +38,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="tf_notaTrabalho1" layoutX="10.0" layoutY="51.0" />
+            <TextField fx:id="tf_notaTrabalho1" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="51.0" />
             <Label prefHeight="25.0" prefWidth="120.0" text="Nota Trabalho 2">
                <font>
                   <Font size="16.0" />
@@ -47,7 +47,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="tf_notaTrabalho2"  layoutX="10.0" layoutY="117.0" />
+            <TextField fx:id="tf_notaTrabalho2" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="117.0" />
             <Label prefHeight="25.0" prefWidth="120.0" text="Média">
                <font>
                   <Font size="16.0" />
@@ -56,10 +56,10 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="tf_media" editable="false" onKeyPressed="#calcularMedia" layoutX="10.0" layoutY="117.0" />
+            <TextField fx:id="tf_media" alignment="CENTER_RIGHT" editable="false" layoutX="10.0" layoutY="117.0" onKeyPressed="#calcularMedia" />
          </children>
       </VBox>
-      <VBox layoutX="354.0" layoutY="102.0" prefHeight="270.0" prefWidth="136.0">
+      <VBox layoutX="354.0" layoutY="102.0" prefHeight="263.0" prefWidth="136.0">
          <children>
             <Label prefHeight="25.0" prefWidth="120.0" text="Nota API">
                <font>
@@ -69,7 +69,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="tf_api"  layoutX="10.0" layoutY="117.0" prefWidth="136.0" />
+            <TextField fx:id="tf_api" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="117.0" prefWidth="136.0" />
             <Label prefHeight="25.0" prefWidth="120.0" text="Pontos Extras">
                <font>
                   <Font size="16.0" />
@@ -78,7 +78,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="tf_pontosExtras" onKeyPressed="#calcularSub"  layoutX="10.0" layoutY="51.0" />
+            <TextField fx:id="tf_pontosExtras" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="51.0" onKeyPressed="#calcularSub" />
             <Label prefHeight="25.0" prefWidth="120.0" text="Prova Sub">
                <font>
                   <Font size="16.0" />
@@ -87,8 +87,8 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="tf_notaSub"  layoutX="10.0" layoutY="117.0" prefWidth="136.0" />
-            <Label layoutX="10.0" layoutY="158.0"  prefHeight="25.0" prefWidth="120.0" text="Média Final">
+            <TextField fx:id="tf_notaSub" alignment="CENTER_RIGHT" layoutX="10.0" layoutY="117.0" prefWidth="136.0" />
+            <Label layoutX="10.0" layoutY="158.0" prefHeight="25.0" prefWidth="120.0" text="Média Final">
                <font>
                   <Font size="16.0" />
                </font>
@@ -96,7 +96,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="tf_mediaFinal" editable="false" onKeyPressed="#calcularMediaFinal" layoutX="10.0" layoutY="184.0" prefWidth="136.0" />
+            <TextField fx:id="tf_mediaFinal" alignment="CENTER_RIGHT" editable="false" layoutX="10.0" layoutY="184.0" onKeyPressed="#calcularMediaFinal" prefWidth="136.0" />
          </children>
          <opaqueInsets>
             <Insets left="200.0" />
@@ -119,5 +119,8 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
+      <Button fx:id="bt_salvar" layoutX="248.0" layoutY="372.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="108.0" text="Salvar" />
+      <Button fx:id="bt_editar" layoutX="382.0" layoutY="372.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="108.0" text="Editar" />
+      <Button fx:id="bt_excluir" layoutX="114.0" layoutY="372.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="108.0" text="Excluir" />
    </children>
 </AnchorPane>
