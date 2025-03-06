@@ -55,7 +55,7 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="tf_media" editable="false" layoutX="10.0" layoutY="184.0" onKeyTyped="#calll" />
+            <TextField fx:id="tf_media" editable="false" layoutX="10.0" layoutY="184.0" onInputMethodTextChanged="#ffrre" onKeyTyped="#calll" />
          </children>
       </VBox>
       <VBox layoutX="354.0" layoutY="102.0" prefHeight="270.0" prefWidth="136.0">

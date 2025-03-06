@@ -37,7 +37,6 @@ public class NotasController implements Initializable {
     @FXML
     private TextField tf_api;
 
-
     @FXML
     private TextField tf_notaTrabalho1;
 
@@ -49,9 +48,9 @@ public class NotasController implements Initializable {
 
     @FXML
     private TableColumn<?, ?> tv_api;
+
     @FXML
     private Label lb_api;
-
 
     @FXML
     private TableColumn<?, ?> tv_e1;
@@ -87,7 +86,6 @@ public class NotasController implements Initializable {
 
     @FXML
     void calcularMedia(KeyEvent event) {
-
         aluno.setNome(tf_nomeAluno.getText().toString());
         aluno.setP1(Double.valueOf(tf_notaP1.getText().toString()));
         aluno.setTrabalho1(Double.valueOf(tf_notaTrabalho1.getText().toString()));
@@ -110,20 +108,13 @@ public class NotasController implements Initializable {
         }else{
             aluno.setApi(Double.valueOf(tf_api.getText().toString()));
         }
-
-
         double media = aluno.getMedia() + (aluno.getApi() * 0.5);
-
         if (media >= 6) {
             this.tf_notaSub.setVisible(false);
             this.tf_notaSub.setText("0");
         } else if (media < 6) {
             this.tf_notaSub.setVisible(true);
-
-
         }
-
-
     }
 
     @FXML
@@ -141,11 +132,6 @@ public class NotasController implements Initializable {
             this.tf_mediaFinal.setText(String.valueOf(aluno.getMediaFinal()));
 
         }
-
-
-
-
-
     }
 
 

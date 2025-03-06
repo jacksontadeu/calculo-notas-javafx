@@ -2,6 +2,7 @@ package com.jtmjinfo.calculonotas.model;
 
 public class Aluno {
 
+    private int id;
     private String nome;
     private double p1;
     private double trabalho1;
@@ -14,6 +15,14 @@ public class Aluno {
 
     public String getNome() {
         return nome;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setNome(String nome) {
