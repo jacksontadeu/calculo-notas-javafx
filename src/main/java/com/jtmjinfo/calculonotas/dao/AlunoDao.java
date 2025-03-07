@@ -2,9 +2,12 @@ package com.jtmjinfo.calculonotas.dao;
 
 import com.jtmjinfo.calculonotas.model.Aluno;
 import com.jtmjinfo.calculonotas.repository.IAlunoRepository;
+import com.jtmjinfo.calculonotas.util.Conexao;
 
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AlunoDao implements IAlunoRepository {
@@ -13,14 +16,13 @@ public class AlunoDao implements IAlunoRepository {
 
     @Override
     public void cadastrarAluno(Aluno aluno) {
-        try{
+        try {
             String sql = "INSERT INTO aluno(nome, p1, trabalho1,trabalho2, media,api, pontosExtras,sub, mediaFinal) " +
-                    "VALUES('"+ aluno.getNome() +"', '"+ aluno.getP1() + "','"+ aluno.getTrabalho1() + "','"+ aluno.getTrabalho2() +"'," +
-                    "'"+ aluno.getMedia() +"','"+ aluno.getApi() +"','"+ aluno.getPontosExtras() +"','"+ aluno.getSub() +"','"+aluno.getMediaFinal() +"')";
+                    "VALUES('" + aluno.getNome() + "', '" + aluno.getP1() + "','" + aluno.getTrabalho1() + "','" + aluno.getTrabalho2() + "'," +
+                    "'" + aluno.getMedia() + "','" + aluno.getApi() + "','" + aluno.getPontosExtras() + "','" + aluno.getSub() + "','" + aluno.getMediaFinal() + "')";
             var conn = DriverManager.getConnection(URL);
             var stmt = conn.createStatement();
             stmt.execute(sql);
-
 
 
         } catch (Exception e) {
@@ -30,8 +32,40 @@ public class AlunoDao implements IAlunoRepository {
 
     @Override
     public List<Aluno> buscarTodos() {
-        return List.of();
+
+        List<Aluno> alunos= new ArrayList<>();
+
+        try {
+            ResultSet rs = null;
+            String sql = "select * from aluno";
+            var conn = DriverManager.getConnection(URL);
+
+            var stmt = conn.createStatement();
+            rs = stmt.executeQuery(sql);
+
+
+            while (rs.next()) {
+                Aluno aluno = new Aluno();
+
+                aluno.setId(rs.getInt("Id"));
+                aluno.setNome(rs.getString("nome"));
+                aluno.setP1(rs.getDouble("p1"));
+                aluno.setTrabalho1(rs.getDouble("trabalho1"));
+                aluno.setTrabalho2(rs.getDouble("trabalho2"));
+                aluno.setApi(rs.getDouble("api"));
+                aluno.setPontosExtras(rs.getDouble("pontosExtras"));
+                aluno.setSub(rs.getDouble("sub"));
+                aluno.setMediaFinal(rs.getDouble("mediaFinal"));
+
+                alunos.add(aluno);
+            }
+
+        } catch (Exception e) {
+            System.out.println("Erro " + e.getMessage());
+        }
+        return alunos;
     }
+
 
     @Override
     public Aluno buscarPorId() {

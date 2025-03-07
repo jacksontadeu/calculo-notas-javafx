@@ -101,4 +101,18 @@ public class Aluno {
         return mediaFinal;
     }
 
+    @Override
+    public String toString() {
+        return "Aluno" + "\n"+
+                "id=" + id + "\n" +
+                " nome='" + nome + '\'' +"\n"+
+                " p1=" + p1 +"\n"+
+                " trabalho1=" + trabalho1 +"\n"+
+                " trabalho2=" + trabalho2 +"\n"+
+                " media=" + media +"\n"+
+                " mediaFinal=" + mediaFinal +"\n"+
+                " pontosExtras=" + pontosExtras +"\n"+
+                " api=" + api +"\n" +
+                " sub=" + sub +"\n";
+    }
 }

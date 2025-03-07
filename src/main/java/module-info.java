@@ -12,4 +12,5 @@ module com.jtmjinfo.calculonotas {
     opens com.jtmjinfo.calculonotas.util to javafx.fxml;
     exports com.jtmjinfo.calculonotas.dao;
     opens com.jtmjinfo.calculonotas.dao to javafx.fxml;
+    opens com.jtmjinfo.calculonotas.model to javafx.base;
 }
