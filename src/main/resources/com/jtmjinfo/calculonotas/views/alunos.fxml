@@ -119,7 +119,7 @@
             <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
          </columnResizePolicy>
       </TableView>
-      <Button fx:id="bt_salvar" layoutX="248.0" layoutY="372.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="108.0" text="Salvar" />
+      <Button fx:id="bt_salvar" layoutX="248.0" onAction="#salvarAluno" layoutY="372.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="108.0" text="Salvar" />
       <Button fx:id="bt_editar" layoutX="382.0" layoutY="372.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="108.0" text="Editar" />
       <Button fx:id="bt_excluir" layoutX="114.0" layoutY="372.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="108.0" text="Excluir" />
    </children>

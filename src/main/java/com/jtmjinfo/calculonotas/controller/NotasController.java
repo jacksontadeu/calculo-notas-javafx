@@ -162,6 +162,18 @@ public class NotasController implements Initializable {
 
     @FXML
     public void salvarAluno(ActionEvent event) {
+        aluno.setNome(tf_nomeAluno.getText().toString());
+        aluno.setP1(Double.valueOf(tf_notaP1.getText().toString()));
+        aluno.setTrabalho1(Double.valueOf(tf_notaTrabalho1.getText().toString()));
+        aluno.setTrabalho2(Double.valueOf(tf_notaTrabalho2.getText().toString()));
+        aluno.setMedia(Double.valueOf(tf_media.getText().toString()));
+        aluno.setApi(Double.valueOf(tf_api.getText().toString()));
+        aluno.setPontosExtras(Double.valueOf(tf_pontosExtras.getText().toString()));
+        aluno.setSub(Double.valueOf(tf_notaSub.getText().toString()));
+        aluno.setMediaFinal(Double.valueOf(tf_mediaFinal.getText().toString()));
+
+        alunoDao.cadastrarAluno(aluno);
+        prepararTabela();
 
     }
 
