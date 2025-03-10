@@ -189,12 +189,9 @@ public class NotasController implements Initializable {
         alunoDao.cadastrarAluno(aluno);
         prepararTabela();
         limparCampos();
-
-
     }
 
     void prepararTabela() {
-
         tc_id.setCellValueFactory(new PropertyValueFactory<>("id"));
         tc_nome.setCellValueFactory(new PropertyValueFactory<>("nome"));
         tc_p1.setCellValueFactory(new PropertyValueFactory<>("p1"));
@@ -213,7 +210,6 @@ public class NotasController implements Initializable {
     }
 
     public void limparCampos() {
-
         tf_nomeAluno.setText("");
         tf_notaP1.setText("");
         tf_notaTrabalho1.setText("");
@@ -223,11 +219,11 @@ public class NotasController implements Initializable {
         tf_pontosExtras.setText("");
         tf_notaSub.setText("");
         tf_mediaFinal.setText("");
-
     }
 
     @FXML
     void mostrarCampos(MouseEvent event) {
+        desabilitarEdicao();
         Aluno alunoTv = (Aluno) tv_aluno.getSelectionModel().getSelectedItem();
         tf_nomeAluno.setText(alunoTv.getNome());
         tf_notaP1.setText(String.valueOf(alunoTv.getP1()));
@@ -267,7 +263,16 @@ public class NotasController implements Initializable {
         tf_api.setText("0");
         tf_notaSub.setText("0");
         tf_pontosExtras.setText("0");
-
     }
+    void desabilitarEdicao(){
+        tf_nomeAluno.setEditable(false);
+        tf_notaP1.setEditable(false);
+        tf_notaTrabalho1.setEditable(false);
+        tf_notaTrabalho2.setEditable(false);
+        tf_notaSub.setEditable(false);
+        tf_api.setEditable(false);
+        tf_pontosExtras.setEditable(false);
+    }
+
 
 }
