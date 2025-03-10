@@ -56,6 +56,7 @@ public class AlunoDao implements IAlunoRepository {
                 aluno.setPontosExtras(rs.getDouble("pontosExtras"));
                 aluno.setSub(rs.getDouble("sub"));
                 aluno.setMediaFinal(rs.getDouble("mediaFinal"));
+                aluno.setMedia(rs.getDouble("media"));
 
                 alunos.add(aluno);
             }

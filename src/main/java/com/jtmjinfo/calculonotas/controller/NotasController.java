@@ -12,12 +12,15 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import static java.lang.Double.parseDouble;
 
 public class NotasController implements Initializable {
 
@@ -80,6 +83,9 @@ public class NotasController implements Initializable {
     private TableColumn tc_mediaFinal;
 
     @FXML
+    private TableColumn tc_media;
+
+    @FXML
     private TableColumn tc_nome;
 
     @FXML
@@ -102,7 +108,12 @@ public class NotasController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         ocultarBotoes();
         prepararTabela();
-
+        validadorTextField(tf_api);
+        validadorTextField(tf_notaTrabalho1);
+        validadorTextField(tf_notaTrabalho2);
+        validadorTextField(tf_notaSub);
+        validadorTextField(tf_pontosExtras);
+        validadorTextField(tf_notaP1);
     }
 
     @FXML
@@ -111,6 +122,7 @@ public class NotasController implements Initializable {
         aluno.setP1(Double.valueOf(tf_notaP1.getText().toString()));
         aluno.setTrabalho1(Double.valueOf(tf_notaTrabalho1.getText().toString()));
         aluno.setTrabalho2(Double.valueOf(tf_notaTrabalho2.getText().toString()));
+
         aluno.setMedia(aluno.calcularMedia());
 
         this.tf_media.setText(String.valueOf(aluno.getMedia()));
@@ -162,8 +174,10 @@ public class NotasController implements Initializable {
 
     @FXML
     public void salvarAluno(ActionEvent event) {
+
         aluno.setNome(tf_nomeAluno.getText().toString());
-        aluno.setP1(Double.valueOf(tf_notaP1.getText().toString()));
+
+        aluno.setP1(Double.parseDouble(tf_notaP1.getText()));
         aluno.setTrabalho1(Double.valueOf(tf_notaTrabalho1.getText().toString()));
         aluno.setTrabalho2(Double.valueOf(tf_notaTrabalho2.getText().toString()));
         aluno.setMedia(Double.valueOf(tf_media.getText().toString()));
@@ -174,6 +188,8 @@ public class NotasController implements Initializable {
 
         alunoDao.cadastrarAluno(aluno);
         prepararTabela();
+        limparCampos();
+
 
     }
 
@@ -184,6 +200,7 @@ public class NotasController implements Initializable {
         tc_p1.setCellValueFactory(new PropertyValueFactory<>("p1"));
         tc_e1.setCellValueFactory(new PropertyValueFactory<>("trabalho1"));
         tc_e2.setCellValueFactory(new PropertyValueFactory<>("trabalho2"));
+        tc_media.setCellValueFactory(new PropertyValueFactory<>("media"));
         tc_mediaFinal.setCellValueFactory(new PropertyValueFactory<>("mediaFinal"));
         tc_api.setCellValueFactory(new PropertyValueFactory<>("api"));
         tc_extras.setCellValueFactory(new PropertyValueFactory<>("pontosExtras"));
@@ -192,8 +209,65 @@ public class NotasController implements Initializable {
         todosAlunos = alunoDao.buscarTodos();
         alunoObservableList = FXCollections.observableList(todosAlunos);
 
-        this.tv_aluno.setItems(alunoObservableList);
+        tv_aluno.setItems(alunoObservableList);
     }
 
+    public void limparCampos() {
+
+        tf_nomeAluno.setText("");
+        tf_notaP1.setText("");
+        tf_notaTrabalho1.setText("");
+        tf_notaTrabalho2.setText("");
+        tf_media.setText("");
+        tf_api.setText("");
+        tf_pontosExtras.setText("");
+        tf_notaSub.setText("");
+        tf_mediaFinal.setText("");
+
+    }
+
+    @FXML
+    void mostrarCampos(MouseEvent event) {
+        Aluno alunoTv = (Aluno) tv_aluno.getSelectionModel().getSelectedItem();
+        tf_nomeAluno.setText(alunoTv.getNome());
+        tf_notaP1.setText(String.valueOf(alunoTv.getP1()));
+        tf_notaTrabalho1.setText(String.valueOf(alunoTv.getTrabalho1()));
+        tf_notaTrabalho2.setText(String.valueOf(alunoTv.getTrabalho2()));
+        tf_api.setText(String.valueOf(alunoTv.getApi()));
+        tf_notaSub.setText(String.valueOf(alunoTv.getSub()));
+        tf_pontosExtras.setText(String.valueOf(alunoTv.getPontosExtras()));
+        tf_mediaFinal.setText(String.valueOf(alunoTv.getMediaFinal()));
+        tf_media.setText(String.valueOf(alunoTv.getMedia()));
+
+    }
+
+    void validadorTextField(TextField field) {
+        inicializarValores();
+        field.textProperty().addListener(
+                ((observable, oldValue, newValue) -> {
+                    try {
+                        if (!newValue.isEmpty())
+                            parseDouble(newValue);
+
+                    } catch (Exception e) {
+                        Alert alert = new Alert(Alert.AlertType.WARNING);
+                        alert.setTitle("Erro");
+                        alert.setContentText("O campo deve conter somente números reais!!!");
+                        alert.show();
+                        field.setText("0");
+                    }
+                })
+        );
+
+    }
+    void inicializarValores(){
+        tf_notaP1.setText("0");
+        tf_notaTrabalho1.setText("0");
+        tf_notaTrabalho2.setText("0");
+        tf_api.setText("0");
+        tf_notaSub.setText("0");
+        tf_pontosExtras.setText("0");
+
+    }
 
 }
