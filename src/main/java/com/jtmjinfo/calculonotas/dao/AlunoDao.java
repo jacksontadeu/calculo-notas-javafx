@@ -70,6 +70,8 @@ public class AlunoDao implements IAlunoRepository {
 
     @Override
     public Aluno buscarPorId() {
+
+
         return null;
     }
 
@@ -79,7 +81,18 @@ public class AlunoDao implements IAlunoRepository {
     }
 
     @Override
-    public void deletarAluno(int id) {
+    public void deletarAluno(Aluno aluno) {
+        String sql = "DELETE FROM aluno WHERE id = "+ aluno.getId() +";";
+
+        try{
+            var conn = DriverManager.getConnection(URL);
+            var stmt = conn.prepareStatement(sql);
+            stmt.setInt(1,aluno.getId());
+            stmt.execute();
+        } catch (SQLException e) {
+            System.out.println("Erro " + e.getMessage());
+        }
+
 
     }
 }

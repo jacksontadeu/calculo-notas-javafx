@@ -10,5 +10,5 @@ public interface IAlunoRepository {
     public List<Aluno> buscarTodos();
     public Aluno buscarPorId();
     public Aluno editarAluno(Aluno aluno, int id);
-    public void deletarAluno(int id);
+    public void deletarAluno(Aluno aluno);
 }

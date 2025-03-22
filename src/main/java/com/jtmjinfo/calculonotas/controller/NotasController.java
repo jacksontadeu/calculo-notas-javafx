@@ -171,6 +171,12 @@ public class NotasController implements Initializable {
         this.bt_editar.setVisible(false);
         this.bt_excluir.setVisible(false);
     }
+    void mmostrarBotoes(){
+        this.bt_editar.setVisible(true);
+        this.bt_excluir.setVisible(true);
+        this.bt_salvar.setVisible(false);
+
+    }
 
     @FXML
     public void salvarAluno(ActionEvent event) {
@@ -220,6 +226,13 @@ public class NotasController implements Initializable {
         tf_notaSub.setText("");
         tf_mediaFinal.setText("");
     }
+    @FXML
+    public void deletarAluno(ActionEvent event){
+
+        alunoDao.deletarAluno(aluno);
+        prepararTabela();
+        limparCampos();
+    }
 
     @FXML
     void mostrarCampos(MouseEvent event) {
@@ -234,6 +247,7 @@ public class NotasController implements Initializable {
         tf_pontosExtras.setText(String.valueOf(alunoTv.getPontosExtras()));
         tf_mediaFinal.setText(String.valueOf(alunoTv.getMediaFinal()));
         tf_media.setText(String.valueOf(alunoTv.getMedia()));
+        mmostrarBotoes();
 
     }
 

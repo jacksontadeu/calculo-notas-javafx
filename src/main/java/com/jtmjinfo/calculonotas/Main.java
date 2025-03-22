@@ -14,6 +14,7 @@ public class Main extends Application {
 
         Scene cenaPrincipal = new Scene(fxmlLoader.load());
 
+        cenaPrincipal.getStylesheets().add("views/styles.css");
         stage.setScene(cenaPrincipal);
         stage.show();
 

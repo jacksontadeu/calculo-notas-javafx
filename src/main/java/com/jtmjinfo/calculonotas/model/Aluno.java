@@ -92,6 +92,7 @@ public class Aluno {
     public void setSub(double sub) {
         this.sub = sub;
     }
+    
     public double calcularMedia(){
         this.media = ((this.p1 * 0.6) + (((this.trabalho1 + this.trabalho2)/2)* 0.4)) * 0.5;
         return this.media;
