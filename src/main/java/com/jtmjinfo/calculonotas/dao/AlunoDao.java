@@ -23,8 +23,6 @@ public class AlunoDao implements IAlunoRepository {
             var conn = DriverManager.getConnection(URL);
             var stmt = conn.createStatement();
             stmt.execute(sql);
-
-
         } catch (Exception e) {
             System.out.println("Erro " + e.getMessage());
         }
@@ -81,18 +79,15 @@ public class AlunoDao implements IAlunoRepository {
     }
 
     @Override
-    public void deletarAluno(Aluno aluno) {
-        String sql = "DELETE FROM aluno WHERE id = "+ aluno.getId() +";";
+    public void deletarAluno(int id) {
+        String sql = "DELETE FROM aluno WHERE id = "+ id +";";
 
         try{
             var conn = DriverManager.getConnection(URL);
-            var stmt = conn.prepareStatement(sql);
-            stmt.setInt(1,aluno.getId());
-            stmt.execute();
+            var stmt = conn.createStatement();
+            stmt.execute(sql);
         } catch (SQLException e) {
             System.out.println("Erro " + e.getMessage());
         }
-
-
     }
 }

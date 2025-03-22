@@ -170,6 +170,7 @@ public class NotasController implements Initializable {
     void ocultarBotoes() {
         this.bt_editar.setVisible(false);
         this.bt_excluir.setVisible(false);
+        this.bt_salvar.setVisible(true);
     }
     void mmostrarBotoes(){
         this.bt_editar.setVisible(true);
@@ -228,10 +229,15 @@ public class NotasController implements Initializable {
     }
     @FXML
     public void deletarAluno(ActionEvent event){
+        Aluno alunoTv = (Aluno) tv_aluno.getSelectionModel().getSelectedItem();
 
-        alunoDao.deletarAluno(aluno);
+        alunoDao.deletarAluno(alunoTv.getId());
         prepararTabela();
         limparCampos();
+        ocultarBotoes();
+        habilitarEdicao();
+        inicializarValores();
+
     }
 
     @FXML
@@ -275,6 +281,8 @@ public class NotasController implements Initializable {
         tf_notaTrabalho1.setText("0");
         tf_notaTrabalho2.setText("0");
         tf_api.setText("0");
+        tf_mediaFinal.setText("0");
+        tf_media.setText("0");
         tf_notaSub.setText("0");
         tf_pontosExtras.setText("0");
     }
@@ -286,6 +294,15 @@ public class NotasController implements Initializable {
         tf_notaSub.setEditable(false);
         tf_api.setEditable(false);
         tf_pontosExtras.setEditable(false);
+    }
+    void habilitarEdicao(){
+        tf_nomeAluno.setEditable(true);
+        tf_notaP1.setEditable(true);
+        tf_notaTrabalho1.setEditable(true);
+        tf_notaTrabalho2.setEditable(true);
+        tf_notaSub.setEditable(true);
+        tf_api.setEditable(true);
+        tf_pontosExtras.setEditable(true);
     }
 
 
