@@ -172,7 +172,8 @@ public class NotasController implements Initializable {
         this.bt_excluir.setVisible(false);
         this.bt_salvar.setVisible(true);
     }
-    void mmostrarBotoes(){
+
+    void mmostrarBotoes() {
         this.bt_editar.setVisible(true);
         this.bt_excluir.setVisible(true);
         this.bt_salvar.setVisible(false);
@@ -181,21 +182,29 @@ public class NotasController implements Initializable {
 
     @FXML
     public void salvarAluno(ActionEvent event) {
+        if (validarNome(tf_nomeAluno) == true) {
+            aluno.setNome(tf_nomeAluno.getText().toString());
+            aluno.setP1(Double.parseDouble(tf_notaP1.getText()));
+            aluno.setTrabalho1(Double.valueOf(tf_notaTrabalho1.getText().toString()));
+            aluno.setTrabalho2(Double.valueOf(tf_notaTrabalho2.getText().toString()));
+            aluno.setMedia(Double.valueOf(tf_media.getText().toString()));
+            aluno.setApi(Double.valueOf(tf_api.getText().toString()));
+            aluno.setPontosExtras(Double.valueOf(tf_pontosExtras.getText().toString()));
+            aluno.setSub(Double.valueOf(tf_notaSub.getText().toString()));
+            aluno.setMediaFinal(Double.valueOf(tf_mediaFinal.getText().toString()));
 
-        aluno.setNome(tf_nomeAluno.getText().toString());
+            alunoDao.cadastrarAluno(aluno);
+            prepararTabela();
+            limparCampos();
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Erro");
+            alert.setContentText("O campo nome não deve ser vazio!!!");
+            alert.show();
+            tf_nomeAluno.requestFocus();
+            return;
+        }
 
-        aluno.setP1(Double.parseDouble(tf_notaP1.getText()));
-        aluno.setTrabalho1(Double.valueOf(tf_notaTrabalho1.getText().toString()));
-        aluno.setTrabalho2(Double.valueOf(tf_notaTrabalho2.getText().toString()));
-        aluno.setMedia(Double.valueOf(tf_media.getText().toString()));
-        aluno.setApi(Double.valueOf(tf_api.getText().toString()));
-        aluno.setPontosExtras(Double.valueOf(tf_pontosExtras.getText().toString()));
-        aluno.setSub(Double.valueOf(tf_notaSub.getText().toString()));
-        aluno.setMediaFinal(Double.valueOf(tf_mediaFinal.getText().toString()));
-
-        alunoDao.cadastrarAluno(aluno);
-        prepararTabela();
-        limparCampos();
     }
 
     void prepararTabela() {
@@ -227,8 +236,9 @@ public class NotasController implements Initializable {
         tf_notaSub.setText("");
         tf_mediaFinal.setText("");
     }
+
     @FXML
-    public void deletarAluno(ActionEvent event){
+    public void deletarAluno(ActionEvent event) {
         Aluno alunoTv = (Aluno) tv_aluno.getSelectionModel().getSelectedItem();
 
         alunoDao.deletarAluno(alunoTv.getId());
@@ -276,7 +286,8 @@ public class NotasController implements Initializable {
         );
 
     }
-    void inicializarValores(){
+
+    void inicializarValores() {
         tf_notaP1.setText("0");
         tf_notaTrabalho1.setText("0");
         tf_notaTrabalho2.setText("0");
@@ -286,7 +297,8 @@ public class NotasController implements Initializable {
         tf_notaSub.setText("0");
         tf_pontosExtras.setText("0");
     }
-    void desabilitarEdicao(){
+
+    void desabilitarEdicao() {
         tf_nomeAluno.setEditable(false);
         tf_notaP1.setEditable(false);
         tf_notaTrabalho1.setEditable(false);
@@ -295,7 +307,8 @@ public class NotasController implements Initializable {
         tf_api.setEditable(false);
         tf_pontosExtras.setEditable(false);
     }
-    void habilitarEdicao(){
+
+    void habilitarEdicao() {
         tf_nomeAluno.setEditable(true);
         tf_notaP1.setEditable(true);
         tf_notaTrabalho1.setEditable(true);
@@ -303,6 +316,12 @@ public class NotasController implements Initializable {
         tf_notaSub.setEditable(true);
         tf_api.setEditable(true);
         tf_pontosExtras.setEditable(true);
+    }
+
+    boolean validarNome(TextField tf) {
+        if (tf.getText().isEmpty() || tf.getText().isBlank())
+            return false;
+        else return true;
     }
 
 

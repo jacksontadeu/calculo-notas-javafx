@@ -3,7 +3,9 @@ package com.jtmjinfo.calculonotas.dao;
 import com.jtmjinfo.calculonotas.model.Aluno;
 import com.jtmjinfo.calculonotas.repository.IAlunoRepository;
 import com.jtmjinfo.calculonotas.util.Conexao;
+import javafx.scene.control.TextField;
 
+import javax.swing.*;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -90,4 +92,5 @@ public class AlunoDao implements IAlunoRepository {
             System.out.println("Erro " + e.getMessage());
         }
     }
+
 }

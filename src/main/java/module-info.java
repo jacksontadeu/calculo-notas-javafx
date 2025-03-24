@@ -2,6 +2,7 @@ module com.jtmjinfo.calculonotas {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires java.desktop;
 
 
     opens com.jtmjinfo.calculonotas to javafx.fxml;
