@@ -2,6 +2,7 @@ package com.jtmjinfo.calculonotas.controller;
 
 import com.jtmjinfo.calculonotas.dao.AlunoDao;
 import com.jtmjinfo.calculonotas.model.Aluno;
+import com.jtmjinfo.calculonotas.model.Nota;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -100,6 +101,7 @@ public class NotasController implements Initializable {
 
 
     Aluno aluno = new Aluno();
+    Nota nota = new Nota();
     AlunoDao alunoDao = new AlunoDao();
     ObservableList<Aluno> alunoObservableList;
     List<Aluno> todosAlunos;
@@ -119,14 +121,15 @@ public class NotasController implements Initializable {
     @FXML
     void calcularMedia(KeyEvent event) {
         aluno.setNome(tf_nomeAluno.getText().toString());
-        aluno.setP1(Double.valueOf(tf_notaP1.getText().toString()));
-        aluno.setTrabalho1(Double.valueOf(tf_notaTrabalho1.getText().toString()));
-        aluno.setTrabalho2(Double.valueOf(tf_notaTrabalho2.getText().toString()));
 
-        aluno.setMedia(aluno.calcularMedia());
+        nota.setP1(Double.valueOf(tf_notaP1.getText().toString()));
+        nota.setTrabalho1(Double.valueOf(tf_notaTrabalho1.getText().toString()));
+       nota.setTrabalho2(Double.valueOf(tf_notaTrabalho2.getText().toString()));
 
-        this.tf_media.setText(String.valueOf(aluno.getMedia()));
-        if ((aluno.getMedia() * 2) >= 6) {
+        nota.setMedia(nota.calcularMedia());
+
+        this.tf_media.setText(String.valueOf(nota.getMedia()));
+        if ((aluno.getNota().getMedia() * 2) >= 6) {
             this.tf_notaSub.setVisible(false);
         } else {
             this.tf_api.setVisible(false);
@@ -139,9 +142,9 @@ public class NotasController implements Initializable {
         if (!this.tf_api.isVisible()) {
             this.tf_api.setText("0");
         } else {
-            aluno.setApi(Double.valueOf(tf_api.getText().toString()));
+            aluno.getNota().setApi(Double.valueOf(tf_api.getText().toString()));
         }
-        double media = aluno.getMedia() + (aluno.getApi() * 0.5);
+        double media = aluno.getNota().getMedia() + (aluno.getNota().getApi() * 0.5);
         if (media >= 6) {
             this.tf_notaSub.setVisible(false);
             this.tf_notaSub.setText("0");
@@ -152,17 +155,17 @@ public class NotasController implements Initializable {
 
     @FXML
     void calcularMediaFinal(KeyEvent event) {
-        aluno.setPontosExtras(Double.valueOf(this.tf_pontosExtras.getText().toString()));
+        aluno.getNota().setPontosExtras(Double.valueOf(this.tf_pontosExtras.getText().toString()));
         if (this.tf_notaSub.isVisible()) {
-            aluno.setSub(Double.valueOf(this.tf_notaSub.getText().toString()));
-            aluno.setMediaFinal(aluno.calcularMediaFinal());
+            aluno.getNota().setSub(Double.valueOf(this.tf_notaSub.getText().toString()));
+            aluno.getNota().setMediaFinal(aluno.getNota().calcularMediaFinal());
 
-            this.tf_mediaFinal.setText(String.valueOf(aluno.getMediaFinal()));
+            this.tf_mediaFinal.setText(String.valueOf(aluno.getNota().getMediaFinal()));
 
         } else {
-            aluno.setMediaFinal(aluno.calcularMediaFinal());
+            aluno.getNota().setMediaFinal(aluno.getNota().calcularMediaFinal());
 
-            this.tf_mediaFinal.setText(String.valueOf(aluno.getMediaFinal()));
+            this.tf_mediaFinal.setText(String.valueOf(aluno.getNota().getMediaFinal()));
 
         }
     }
@@ -184,14 +187,14 @@ public class NotasController implements Initializable {
     public void salvarAluno(ActionEvent event) {
         if (validarNome(tf_nomeAluno) == true) {
             aluno.setNome(tf_nomeAluno.getText().toString());
-            aluno.setP1(Double.parseDouble(tf_notaP1.getText()));
-            aluno.setTrabalho1(Double.valueOf(tf_notaTrabalho1.getText().toString()));
-            aluno.setTrabalho2(Double.valueOf(tf_notaTrabalho2.getText().toString()));
-            aluno.setMedia(Double.valueOf(tf_media.getText().toString()));
-            aluno.setApi(Double.valueOf(tf_api.getText().toString()));
-            aluno.setPontosExtras(Double.valueOf(tf_pontosExtras.getText().toString()));
-            aluno.setSub(Double.valueOf(tf_notaSub.getText().toString()));
-            aluno.setMediaFinal(Double.valueOf(tf_mediaFinal.getText().toString()));
+            aluno.getNota().setP1(Double.parseDouble(tf_notaP1.getText()));
+            aluno.getNota().setTrabalho1(Double.valueOf(tf_notaTrabalho1.getText().toString()));
+            aluno.getNota().setTrabalho2(Double.valueOf(tf_notaTrabalho2.getText().toString()));
+            aluno.getNota().setMedia(Double.valueOf(tf_media.getText().toString()));
+            aluno.getNota().setApi(Double.valueOf(tf_api.getText().toString()));
+            aluno.getNota().setPontosExtras(Double.valueOf(tf_pontosExtras.getText().toString()));
+            aluno.getNota().setSub(Double.valueOf(tf_notaSub.getText().toString()));
+            aluno.getNota().setMediaFinal(Double.valueOf(tf_mediaFinal.getText().toString()));
 
             alunoDao.cadastrarAluno(aluno);
             prepararTabela();
@@ -255,14 +258,14 @@ public class NotasController implements Initializable {
         desabilitarEdicao();
         Aluno alunoTv = (Aluno) tv_aluno.getSelectionModel().getSelectedItem();
         tf_nomeAluno.setText(alunoTv.getNome());
-        tf_notaP1.setText(String.valueOf(alunoTv.getP1()));
-        tf_notaTrabalho1.setText(String.valueOf(alunoTv.getTrabalho1()));
-        tf_notaTrabalho2.setText(String.valueOf(alunoTv.getTrabalho2()));
-        tf_api.setText(String.valueOf(alunoTv.getApi()));
-        tf_notaSub.setText(String.valueOf(alunoTv.getSub()));
-        tf_pontosExtras.setText(String.valueOf(alunoTv.getPontosExtras()));
-        tf_mediaFinal.setText(String.valueOf(alunoTv.getMediaFinal()));
-        tf_media.setText(String.valueOf(alunoTv.getMedia()));
+        tf_notaP1.setText(String.valueOf(alunoTv.getNota().getP1()));
+        tf_notaTrabalho1.setText(String.valueOf(alunoTv.getNota().getTrabalho1()));
+        tf_notaTrabalho2.setText(String.valueOf(alunoTv.getNota().getTrabalho2()));
+        tf_api.setText(String.valueOf(alunoTv.getNota().getApi()));
+        tf_notaSub.setText(String.valueOf(alunoTv.getNota().getSub()));
+        tf_pontosExtras.setText(String.valueOf(alunoTv.getNota().getPontosExtras()));
+        tf_mediaFinal.setText(String.valueOf(alunoTv.getNota().getMediaFinal()));
+        tf_media.setText(String.valueOf(alunoTv.getNota().getMedia()));
         mmostrarBotoes();
 
     }
