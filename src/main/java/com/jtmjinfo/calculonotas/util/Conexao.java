@@ -6,27 +6,30 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class Conexao {
-    public static void obterConexao() {
-        // connection string
-        var url = "jdbc:sqlite:notas.db";
 
-        try (var conn = DriverManager.getConnection(url)) {
-            System.out.println("Connection to SQLite has been established.");
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
+
+    private static final String URL = "jdbc:mysql://datatechapi.mysql.database.azure.com:3306/calculonotas";
+
+    private static String USER = "sr";
+    private static final String PASSWORD = "Admin@123";
+
+    public static Connection obterConexao() throws SQLException {
+        String driverName = "com.mysql.cj.jdbc.Driver";
+        try {
+            Class.forName(driverName);
+            System.out.println("Conectado");
+            return DriverManager.getConnection(URL, USER, PASSWORD);
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new SQLException("Erro ao conectar " + e.getMessage());
         }
-
     }
-    public static void fecharConexao(Connection connection) throws SQLException{
-        if (!connection.isClosed() && connection != null){
+
+    public static void fecharConexao(Connection connection) throws SQLException {
+        if (!connection.isClosed() && connection != null) {
             connection.close();
-            System.out.println("sucesso");
         }
 
-
-
     }
-
 
 
 }
