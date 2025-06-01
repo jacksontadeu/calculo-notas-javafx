@@ -14,7 +14,7 @@ import java.util.List;
 
 public class AlunoDao implements IAlunoRepository {
 
-    private static final String URL = "jdbc:sqlite:notas.db";
+    private static final String URL = "jdbc:sqlite:c:/banco/notas.db";
 
     @Override
     public void cadastrarAluno(Aluno aluno) {

@@ -3,15 +3,24 @@
     <output-path>$PROJECT_DIR$/out/artifacts/CalculoNotas_jar</output-path>
     <root id="archive" name="CalculoNotas.jar">
       <element id="module-output" name="CalculoNotas" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/17.0.6/javafx-graphics-17.0.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/17.0.6/javafx-base-17.0.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/17.0.6/javafx-controls-17.0.6-win.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/17.0.6/javafx-fxml-17.0.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/17.0.6/javafx-controls-17.0.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/17.0.6/javafx-graphics-17.0.6.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/17.0.6/javafx-base-17.0.6-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/xerial/sqlite-jdbc/3.49.1.0/sqlite-jdbc-3.49.1.0.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/17.0.6/javafx-graphics-17.0.6-win.jar" path-in-jar="/" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/17.0.6/javafx-fxml-17.0.6-win.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/xerial/sqlite-jdbc/3.49.1.0/sqlite-jdbc-3.49.1.0.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/17.0.6/javafx-controls-17.0.6.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/17.0.6/javafx-controls-17.0.6-win.jar" path-in-jar="/" />
-      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/17.0.6/javafx-base-17.0.6.jar" path-in-jar="/" />
+      <element id="library" level="project" name="Maven: org.xerial:sqlite-jdbc:3.49.1.0" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:win:17.0.6" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-graphics:17.0.6" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:win:17.0.6" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-fxml:17.0.6" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:win:17.0.6" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-controls:17.0.6" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:win:17.0.6" />
+      <element id="library" level="project" name="Maven: org.openjfx:javafx-base:17.0.6" />
       <element id="file-copy" path="$PROJECT_DIR$/../openjfx-23.0.2_windows-x64_bin-sdk (1)/javafx-sdk-23.0.2/lib/javafx-swt.jar" />
       <element id="file-copy" path="$PROJECT_DIR$/../openjfx-23.0.2_windows-x64_bin-sdk (1)/javafx-sdk-23.0.2/lib/javafx.base.jar" />
       <element id="file-copy" path="$PROJECT_DIR$/../openjfx-23.0.2_windows-x64_bin-sdk (1)/javafx-sdk-23.0.2/lib/javafx.controls.jar" />
