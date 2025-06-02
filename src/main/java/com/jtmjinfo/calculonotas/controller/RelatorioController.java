@@ -103,7 +103,7 @@ public class RelatorioController implements Initializable {
 
         } else {
             Document documento = new Document();
-            PdfWriter.getInstance(documento, new FileOutputStream("relatorio alunos.pdf"));
+            PdfWriter.getInstance(documento, new FileOutputStream(notaTv.getNome() +".pdf"));
             documento.open();
             documento.setPageSize(PageSize.A4);
             documento.setMargins(0, 0, 3, 3);
@@ -185,7 +185,7 @@ public class RelatorioController implements Initializable {
 
             documento.add(table);
             Desktop desktop = Desktop.getDesktop();
-            desktop.open(new File("relatorio alunos.pdf"));
+            desktop.open(new File(notaTv.getNome() +".pdf"));
             documento.close();
         }
     }
