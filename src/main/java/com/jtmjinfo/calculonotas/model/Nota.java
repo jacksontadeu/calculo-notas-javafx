@@ -3,14 +3,24 @@ package com.jtmjinfo.calculonotas.model;
 public class Nota {
 
     private int id;
-    private double p1;
-    private double trabalho1;
-    private double trabalho2;
+    private double p1=0;
+    private double trabalho1=0;
+    private double trabalho2=0;
     private double media = 0;
     private double mediaFinal = 0;
     private double pontosExtras =0;
-    private double api=0 ;
-    private double sub=0;
+    private double api= 0 ;
+    private double sub= 0;
+    private String nome;
+
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
     public int getId() {
         return id;
@@ -90,5 +100,21 @@ public class Nota {
     public double calcularMediaFinal(){
         this.mediaFinal = media + (this.api * 0.5) + this.pontosExtras + (this.sub * 0.3);
         return mediaFinal;
+    }
+
+    @Override
+    public String toString() {
+        return "Nota{" +
+                "id=" + id +
+                ", p1=" + p1 +
+                ", trabalho1=" + trabalho1 +
+                ", trabalho2=" + trabalho2 +
+                ", media=" + media +
+                ", mediaFinal=" + mediaFinal +
+                ", pontosExtras=" + pontosExtras +
+                ", api=" + api +
+                ", sub=" + sub +
+                ", nome='" + nome + '\'' +
+                '}';
     }
 }

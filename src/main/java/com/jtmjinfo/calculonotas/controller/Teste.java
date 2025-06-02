@@ -1,17 +1,22 @@
 package com.jtmjinfo.calculonotas.controller;
 
-import com.jtmjinfo.calculonotas.model.Aluno;
+
+import com.jtmjinfo.calculonotas.dao.NotaDao;
+
+import com.jtmjinfo.calculonotas.model.Nota;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Teste {
 
     public static void main(String[] args) {
-        Aluno aluno = new Aluno();
+        Nota nota = new Nota();
+        NotaDao notaDao = new NotaDao();
+        
 
-        aluno.getNota().setP1(8);
-        aluno.getNota().setTrabalho1(6);
-        aluno.getNota().setTrabalho2(8);
 
-        System.out.println(aluno.getNota().calcularMedia());
-        System.out.println(aluno.getNota().getMedia());
+
+
     }
 }

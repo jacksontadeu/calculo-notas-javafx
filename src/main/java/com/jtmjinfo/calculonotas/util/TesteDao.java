@@ -1,7 +1,5 @@
 package com.jtmjinfo.calculonotas.util;
 
-import com.jtmjinfo.calculonotas.dao.AlunoDao;
-import com.jtmjinfo.calculonotas.model.Aluno;
 
 import java.sql.Connection;
 import java.sql.SQLException;

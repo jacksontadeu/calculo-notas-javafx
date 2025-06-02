@@ -1,14 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.jtmjinfo.calculonotas.controller.TelaMenuController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="460.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jtmjinfo.calculonotas.controller.TelaMenuController">
+   <children>
+      <ButtonBar layoutX="4.0" layoutY="147.0" prefHeight="150.0" prefWidth="594.0">
+        <buttons>
+            <Button fx:id="btn_aluno" mnemonicParsing="false" onAction="#cadastrarAluno" prefHeight="110.0" prefWidth="220.0">
+               <graphic>
+                  <ImageView fitHeight="100.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/aluno.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Cadastrar Aluno" />
+               </tooltip>
+            </Button>
+            <Button fx:id="btn_nota" mnemonicParsing="false" onAction="#cadastrarNota" prefHeight="109.0" prefWidth="220.0">
+               <graphic>
+                  <ImageView fitHeight="100.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/notas.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Cadastrar Notas" />
+               </tooltip>
+            </Button>
+          <Button fx:id="btn_relatorio" mnemonicParsing="false" onAction="#emitirRelatorio" prefHeight="110.0" prefWidth="220.0">
+               <graphic>
+                  <ImageView fitHeight="100.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imagens/relatorios.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <tooltip>
+                  <Tooltip text="Emitir Relatório" />
+               </tooltip>
+            </Button>
+        </buttons>
+      </ButtonBar>
+      <Label alignment="CENTER" layoutX="-2.0" layoutY="50.0" prefHeight="36.0" prefWidth="617.0" text="Cadastro de Notas Linguagem de Programação I">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl_rodape" alignment="CENTER" layoutX="14.0" layoutY="442.0" prefHeight="17.0" prefWidth="620.0">
+         <font>
+            <Font name="System Bold Italic" size="12.0" />
+         </font>
+      </Label>
+   </children>
 </AnchorPane>
