@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -14,53 +13,43 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="460.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jtmjinfo.calculonotas.controller.AlunoController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.jtmjinfo.calculonotas.controller.RelatorioController">
    <children>
-      <Label alignment="CENTER" layoutX="2.0" layoutY="5.0" prefHeight="17.0" prefWidth="600.0" text="Cadastro de Alunos">
+      <TableView fx:id="tv_aluno" layoutX="4.0" layoutY="77.0"  prefHeight="233.0" prefWidth="614.0">
+         <columns>
+            <TableColumn fx:id="tc_nome" prefWidth="190.66665649414062" text="Nome" />
+            <TableColumn fx:id="tc_p1" minWidth="9.999969482421875" prefWidth="36.0" text="P1" />
+            <TableColumn fx:id="tc_e1" prefWidth="43.33331298828125" text="E1" />
+            <TableColumn fx:id="tc_e2" prefWidth="44.6666259765625" text="E2" />
+            <TableColumn fx:id="tc_media" prefWidth="52.0" text="Média" />
+            <TableColumn fx:id="tc_api" prefWidth="61.33331298828125" text="API" />
+            <TableColumn fx:id="tc_extras" prefWidth="42.66668701171875" text="Extras" />
+            <TableColumn fx:id="tc_sub" prefWidth="58.66668701171875" text="Sub" />
+            <TableColumn fx:id="tc_mediaFinal" prefWidth="84.66668701171875" text="Média Final" />
+         </columns>
+      </TableView>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="-5.0" layoutY="16.0" prefHeight="35.0" prefWidth="620.0" text="Relatório de Alunos" textAlignment="CENTER">
          <font>
             <Font name="System Bold" size="25.0" />
          </font>
       </Label>
-      <GridPane layoutX="26.0" layoutY="49.0" prefHeight="131.0" prefWidth="559.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="275.3333740234375" minWidth="10.0" prefWidth="169.99998474121094" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="390.00001525878906" minWidth="10.0" prefWidth="390.00001525878906" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="79.33334350585938" minHeight="10.0" prefHeight="63.333333333333336" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="71.99997965494791" minHeight="10.0" prefHeight="68.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="173.0" text="Nome do Aluno">
-               <font>
-                  <Font name="System Bold Italic" size="17.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" prefHeight="17.0" prefWidth="169.0" text="Email do Aluno" GridPane.rowIndex="1">
-               <font>
-                  <Font name="System Bold Italic" size="17.0" />
-               </font>
-            </Label>
-            <TextField fx:id="txt_nome" GridPane.columnIndex="1" />
-            <TextField fx:id="txt_email" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-         </children>
-      </GridPane>
-      <Label fx:id="lbl_rodape" alignment="CENTER" layoutX="14.0" layoutY="442.0" prefHeight="17.0" prefWidth="620.0">
+      <Label fx:id="lbl_rodape" alignment="CENTER" layoutX="11.0" layoutY="446.0" prefHeight="17.0" prefWidth="620.0">
          <font>
-            <Font name="System Bold Italic" size="12.0" />
+            <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <GridPane layoutX="22.0" layoutY="351.0" prefHeight="60.0" prefWidth="579.0">
+      <GridPane layoutX="55.0" layoutY="318.0" prefHeight="68.0" prefWidth="559.0">
         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints />
+            <RowConstraints />
         </rowConstraints>
          <children>
-            <Button fx:id="btn_voltar" mnemonicParsing="false" onAction="#voltarMenu" prefHeight="60.0" prefWidth="100.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Button fx:id="btn_voltar" contentDisplay="CENTER" mnemonicParsing="false" onAction="#voltarMenu" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -69,40 +58,34 @@
                   </ImageView>
                </graphic>
                <tooltip>
-                  <Tooltip text="1voltar ao Menu Principal" />
+                  <Tooltip text="Voltar ao Menu Principal" />
                </tooltip>
             </Button>
-            <Button fx:id="btn_salvar" mnemonicParsing="false" onAction="#salvarAluno" prefHeight="60.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Button fx:id="btn_aluno" contentDisplay="CENTER" mnemonicParsing="false" onAction="#emitirAluno" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../imagens/salvar.png" />
+                        <Image url="@../imagens/aluno.png" />
                      </image>
                   </ImageView>
                </graphic>
                <tooltip>
-                  <Tooltip text="Salvar Aluno" />
+                  <Tooltip text="Relatório por Aluno" />
                </tooltip>
             </Button>
-            <Button fx:id="btn_excluir" mnemonicParsing="false" onAction="#excluirAluno" prefHeight="60.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Button fx:id="btn_geral" contentDisplay="CENTER" mnemonicParsing="false" onAction="#emitirGeral" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <graphic>
                   <ImageView fitHeight="60.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../imagens/excluir%20preto.png" />
+                        <Image url="@../imagens/variosalunos.png" />
                      </image>
                   </ImageView>
                </graphic>
                <tooltip>
-                  <Tooltip text="Excluir Aluno" />
+                  <Tooltip text="Relatório Geral" />
                </tooltip>
             </Button>
          </children>
       </GridPane>
-      <TableView fx:id="tbv_aluno" layoutX="24.0" layoutY="166.0" prefHeight="176.0" prefWidth="559.0">
-        <columns>
-          <TableColumn fx:id="tbc_email" prefWidth="272.00000953674316" text="Email" />
-          <TableColumn fx:id="tbc_nome" prefWidth="285.9999694824219" text="Nome" />
-        </columns>
-      </TableView>
    </children>
 </AnchorPane>

@@ -13,7 +13,9 @@ public class Teste {
     public static void main(String[] args) {
         Nota nota = new Nota();
         NotaDao notaDao = new NotaDao();
-        
+
+        nota=notaDao.buscarPorId(11);
+        System.out.println(nota);
 
 
 

@@ -1,7 +1,8 @@
 module com.jtmjinfo.calculonotas {
-    requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires com.github.librepdf.openpdf;
+    requires org.controlsfx.controls;
     requires java.desktop;
 
 

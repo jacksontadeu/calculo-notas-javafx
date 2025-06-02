@@ -33,7 +33,7 @@ public class TelaMenuController implements Initializable {
     }
 
     @FXML
-    void cadastrarAluno(ActionEvent event) throws IOException {
+    void emitirRelatorio(ActionEvent event) throws IOException {
         App.setRoot("views/alunos.fxml");
     }
 
@@ -43,8 +43,8 @@ public class TelaMenuController implements Initializable {
     }
 
     @FXML
-    void emitirRelatorio(ActionEvent event) throws IOException {
-        App.setRoot("views/notas.fxml");
+    void sairSistema(ActionEvent event) throws IOException {
+        System.exit(0);
     }
 
 

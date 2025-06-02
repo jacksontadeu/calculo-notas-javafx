@@ -70,8 +70,33 @@ public class NotaDao implements INotaRepository {
         return notas;
     }
     @Override
-    public Nota buscarPorEmail() {
-        return null;
+    public Nota buscarPorId(int id) {
+        Nota nota = null;
+        try{
+            String sql = "select * from nota where id=?";
+            PreparedStatement ps = Conexao.obterConexao().prepareStatement(sql);
+            ps.setInt(1, id);
+
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                nota= new Nota();
+                nota.setNome(rs.getString("nomealuno"));
+                nota.setP1(rs.getDouble("p1"));
+                nota.setApi(rs.getDouble("api"));
+                nota.setTrabalho1(rs.getDouble("trabalho1"));
+                nota.setTrabalho2(rs.getDouble("trabalho2"));
+                nota.setMedia(rs.getDouble("media"));
+                nota.setMediaFinal(rs.getDouble("mediafinal"));
+                nota.setPontosExtras(rs.getDouble("pontosextras"));
+                nota.setSub(rs.getDouble("sub"));
+                nota.setId(rs.getInt("id"));
+
+            }
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return nota;
     }
 
     @Override

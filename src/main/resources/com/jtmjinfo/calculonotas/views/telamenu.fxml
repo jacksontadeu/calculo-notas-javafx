@@ -13,7 +13,7 @@
    <children>
       <ButtonBar layoutX="4.0" layoutY="147.0" prefHeight="150.0" prefWidth="594.0">
         <buttons>
-            <Button fx:id="btn_aluno" mnemonicParsing="false" onAction="#cadastrarAluno" prefHeight="110.0" prefWidth="220.0">
+            <Button fx:id="btn_aluno" mnemonicParsing="false" onAction="#emitirRelatorio" prefHeight="110.0" prefWidth="220.0">
                <graphic>
                   <ImageView fitHeight="100.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -22,7 +22,7 @@
                   </ImageView>
                </graphic>
                <tooltip>
-                  <Tooltip text="Cadastrar Aluno" />
+                  <Tooltip text="Relatório de Alunos" />
                </tooltip>
             </Button>
             <Button fx:id="btn_nota" mnemonicParsing="false" onAction="#cadastrarNota" prefHeight="109.0" prefWidth="220.0">
@@ -37,16 +37,16 @@
                   <Tooltip text="Cadastrar Notas" />
                </tooltip>
             </Button>
-          <Button fx:id="btn_relatorio" mnemonicParsing="false" onAction="#emitirRelatorio" prefHeight="110.0" prefWidth="220.0">
+          <Button fx:id="btn_sair" mnemonicParsing="false" onAction="#sairSistema" prefHeight="110.0" prefWidth="220.0">
                <graphic>
                   <ImageView fitHeight="100.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../imagens/relatorios.png" />
+                        <Image url="@../imagens/sair.png" />
                      </image>
                   </ImageView>
                </graphic>
                <tooltip>
-                  <Tooltip text="Emitir Relatório" />
+                  <Tooltip text="Sair do Sistema" />
                </tooltip>
             </Button>
         </buttons>
