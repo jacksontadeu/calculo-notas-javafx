@@ -10,6 +10,8 @@ A fórmula aplicada foi a seguinte:
 Foi desenvolvido com as seguintes ferramentas:
 
 - IDE: Intellij IDEA 
-- Banco de Dados: SQLite
-- Inteface Gráfica: Scene Builder
+- Banco de Dados: MySql na Azure Devops
+- JDBC 
+- Liguagem do Backend Java 17
+- Inteface Gráfica: JavaFx - Scene Builder
 - Git / Github para versionamento do código.
