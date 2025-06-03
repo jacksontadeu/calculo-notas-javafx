@@ -32,6 +32,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static com.jtmjinfo.calculonotas.util.Alerta.emitirAlertaSelecao;
 import static com.jtmjinfo.calculonotas.util.mensagemRodape.mostrarNome;
 
 public class RelatorioController implements Initializable {
@@ -94,12 +95,7 @@ public class RelatorioController implements Initializable {
     void emitirAluno(ActionEvent event) throws IOException {
         Nota notaTv = (Nota) tv_aluno.getSelectionModel().getSelectedItem();
         if (notaTv == null) {
-            Notifications.create()
-                    .title("Atenção")
-                    .text("Selecione um aluno(a) para continuar!!!")
-                    .darkStyle()
-                    .position(Pos.CENTER)
-                    .showWarning();
+            emitirAlertaSelecao();
 
         } else {
             Document documento = new Document();
@@ -107,17 +103,14 @@ public class RelatorioController implements Initializable {
             documento.open();
             documento.setPageSize(PageSize.A4);
             documento.setMargins(0, 0, 3, 3);
-
             Font fonte = FontFactory.getFont(FontFactory.HELVETICA, 10, Font.BOLD);
             Font fonteCabecalho = FontFactory.getFont(FontFactory.HELVETICA, 12, Font.BOLD, new Color(0, 0, 0));
             Font titulo = FontFactory.getFont(FontFactory.TIMES_ROMAN, 20, Font.BOLD);
-
             Table table = new Table(9);
             table.setWidths(new float[]{25, 10, 10, 10, 10, 10, 10, 10, 20});
             table.setWidth(100);
             table.setHorizontalAlignment(HorizontalAlignment.CENTER);
             Paragraph p = new Paragraph("Relatório de Aluno LP I", titulo);
-
             p.setAlignment("center");
             documento.add(p);
             Cell nomeAluno = new Cell(new Phrase("Nome do Aluno", fonteCabecalho));
@@ -148,10 +141,7 @@ public class RelatorioController implements Initializable {
             table.addCell(pontosExtras);
             table.addCell(mediaFinal);
             table.setBackgroundColor(ColorUIResource.getHSBColor(255, 200, 50));
-
-
             nota = notaDao.buscarPorId(notaTv.getId());
-
             Cell aluno = new Cell(new Phrase(nota.getNome(), fonte));
             aluno.setHorizontalAlignment(HorizontalAlignment.CENTER);
             Cell notaP1 = new Cell(new Phrase(String.valueOf(nota.getP1()), fonte));
@@ -170,8 +160,6 @@ public class RelatorioController implements Initializable {
             notaPontos.setHorizontalAlignment(HorizontalAlignment.CENTER);
             Cell notaFinal = new Cell(new Phrase(String.valueOf(nota.getMediaFinal()), fonte));
             notaFinal.setHorizontalAlignment(HorizontalAlignment.CENTER);
-
-
             table.addCell(aluno);
             table.addCell(notaP1);
             table.addCell(e1);
@@ -181,8 +169,6 @@ public class RelatorioController implements Initializable {
             table.addCell(notaSub);
             table.addCell(notaPontos);
             table.addCell(notaFinal);
-
-
             documento.add(table);
             Desktop desktop = Desktop.getDesktop();
             desktop.open(new File(notaTv.getNome() +".pdf"));

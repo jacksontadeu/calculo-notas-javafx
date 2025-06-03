@@ -22,6 +22,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import static com.jtmjinfo.calculonotas.util.Alerta.*;
 import static com.jtmjinfo.calculonotas.util.mensagemRodape.mostrarNome;
 import static java.lang.Double.parseDouble;
 
@@ -123,8 +124,6 @@ public class NotaController implements Initializable {
         validadorTextField(txt_pontos);
         validadorTextField(txt_p1);
         lbl_rodape.setText(mostrarNome());
-
-
     }
 
     @FXML
@@ -132,9 +131,7 @@ public class NotaController implements Initializable {
         nota.setP1(Double.valueOf(txt_p1.getText().toString()));
         nota.setTrabalho1(Double.valueOf(txt_trabalho1.getText().toString()));
         nota.setTrabalho2(Double.valueOf(txt_trabalho2.getText().toString()));
-
         nota.setMedia(nota.calcularMedia());
-
         this.txt_media.setText(String.valueOf(nota.getMedia()));
         if ((nota.getMedia() * 2) >= 6) {
             this.txt_sub.setVisible(false);
@@ -175,7 +172,6 @@ public class NotaController implements Initializable {
     void salvarEdicao(ActionEvent event) throws IOException {
         if (validarNome(txt_nome) == true) {
             Nota notaTv = (Nota) tv_aluno.getSelectionModel().getSelectedItem();
-
             nota.setP1(Double.parseDouble(txt_p1.getText()));
             nota.setTrabalho1(Double.valueOf(txt_trabalho1.getText().toString()));
             nota.setTrabalho2(Double.valueOf(txt_trabalho2.getText().toString()));
@@ -186,19 +182,15 @@ public class NotaController implements Initializable {
             nota.setMediaFinal(Double.valueOf(txt_mediafinal.getText().toString()));
             nota.setNome(txt_nome.getText());
             notaDao.editarNota(nota, notaTv.getId());
+            emitirSucesso();
             App.setRoot("views/notas.fxml");
 
         } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Erro");
-            alert.setContentText("O campo nome não deve ser vazio!!!");
-            alert.show();
+            emitirAtencao();
             txt_nome.requestFocus();
             return;
         }
-
     }
-
 
     @FXML
     void calcularMediaFinal(KeyEvent event) {
@@ -206,14 +198,10 @@ public class NotaController implements Initializable {
         if (this.txt_sub.isVisible()) {
             nota.setSub(Double.valueOf(this.txt_sub.getText().toString()));
             nota.setMediaFinal(nota.calcularMediaFinal());
-
             this.txt_mediafinal.setText(String.valueOf(nota.getMediaFinal()));
-
         } else {
             nota.setMediaFinal(nota.calcularMediaFinal());
-
             this.txt_mediafinal.setText(String.valueOf(nota.getMediaFinal()));
-
         }
     }
 
@@ -228,13 +216,11 @@ public class NotaController implements Initializable {
         this.btn_editar.setVisible(true);
         this.btn_excluir.setVisible(true);
         this.btn_salvar.setVisible(false);
-
     }
 
     @FXML
     public void salvarNotas(ActionEvent event) throws IOException {
         if (validarNome(txt_nome) == true) {
-
             nota.setP1(Double.parseDouble(txt_p1.getText()));
             nota.setTrabalho1(Double.valueOf(txt_trabalho1.getText().toString()));
             nota.setTrabalho2(Double.valueOf(txt_trabalho2.getText().toString()));
@@ -245,12 +231,10 @@ public class NotaController implements Initializable {
             nota.setMediaFinal(Double.valueOf(txt_mediafinal.getText().toString()));
             nota.setNome(txt_nome.getText());
             notaDao.cadastrarNota(nota);
+            emitirSucesso();
             App.setRoot("views/notas.fxml");
         } else {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Erro");
-            alert.setContentText("O campo nome não deve ser vazio!!!");
-            alert.show();
+            emitirAtencao();
             txt_nome.requestFocus();
             return;
         }
@@ -271,11 +255,11 @@ public class NotaController implements Initializable {
         tv_aluno.setItems(notasObservableList);
     }
 
-
     @FXML
     public void excluirNotas(ActionEvent event) throws IOException {
        Nota notaTv = (Nota) tv_aluno.getSelectionModel().getSelectedItem();
        notaDao.deletarNota(notaTv.getId());
+        emitirSucessoExclusao();
         App.setRoot("views/notas.fxml");
     }
 
@@ -305,17 +289,12 @@ public class NotaController implements Initializable {
                             parseDouble(newValue);
 
                     } catch (Exception e) {
-                        Alert alert = new Alert(Alert.AlertType.WARNING);
-                        alert.setTitle("Erro");
-                        alert.setContentText("O campo deve conter somente números reais!!!");
-                        alert.show();
+                        emitirAlertaCamposNumericos();
                         field.setText("0");
                     }
                 })
         );
-
     }
-
     void inicializarValores() {
         txt_nome.setText("");
         txt_p1.setText("0");
@@ -353,7 +332,4 @@ public class NotaController implements Initializable {
             return false;
         else return true;
     }
-
-
-
 }
