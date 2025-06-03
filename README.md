@@ -9,7 +9,7 @@ A fórmula aplicada foi a seguinte:
 # Funções do Sistema
 
 - Cadastro do aluno e das notas da disciplina.
-= Emissão de relatório do aluno com todas as notas em PDF.
+- Emissão de relatório do aluno com todas as notas em PDF.
 - Emissãç de relatório de todos alunos com a média final em PDF. 
 
 
@@ -21,4 +21,4 @@ A fórmula aplicada foi a seguinte:
 - Liguagem do Backend Java 17
 - Inteface Gráfica: JavaFx - Scene Builder
 - Git / Github para versionamento do código.
-= OpenPdf para criação dos PDF's.
+- OpenPdf para criação dos PDF's.
