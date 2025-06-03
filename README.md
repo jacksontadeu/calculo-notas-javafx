@@ -8,7 +8,7 @@ A fórmula aplicada foi a seguinte:
 
 # Funções do Sistema
 
-- Cadastro do aluno e das notas da disciplina
+- Cadastro do aluno e das notas da disciplina.
 = Emissão de relatório do aluno com todas as notas em PDF.
 - Emissãç de relatório de todos alunos com a média final em PDF. 
 
