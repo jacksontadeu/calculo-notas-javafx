@@ -6,7 +6,7 @@ Aplicativo desenvolvido em JavaFx com o objetivo de calcular a nota final do alu
 A fórmula aplicada foi a seguinte:
 (P10.6+((E1+E2)/2)0.4)0.5+(max(((P10.6+((E1+E2)/2)0.4)-5.9),0)/((P10.6+((E1+E2)/2)0.4)-5.9))(API0.5)+X+(SUB0.2)
 
-# FUNÇÔES DO SISTEMA
+# Funções do Sistema
 
 - Cadastro do aluno e das notas da disciplina
 = Emissão de relatório do aluno com todas as notas em PDF.
