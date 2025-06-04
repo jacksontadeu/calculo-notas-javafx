@@ -99,6 +99,10 @@ public class Nota {
     }
     public double calcularMediaFinal(){
         this.mediaFinal = media + (this.api * 0.5) + this.pontosExtras + (this.sub * 0.3);
+        if (mediaFinal > 10)
+            mediaFinal = 10;
+        else
+            mediaFinal = mediaFinal;
         return mediaFinal;
     }
 
